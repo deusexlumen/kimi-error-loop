@@ -264,6 +264,80 @@ footer .sig{
   transition:opacity 1s,transform 1.2s cubic-bezier(.19,1,.22,1)}
 .rev.in{opacity:1;transform:none}
 
+/* ---------- Texts (Lyrics) ---------- */
+#texts{position:relative;z-index:10;padding:16vh 26px 8vh}
+#texts>.head,#band>.head{
+  margin-bottom:7vh;
+}
+#texts>.head .k,#band>.head .k{
+  font-family:var(--mono);font-size:var(--micro);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--cold);display:block;margin-bottom:2.2vh;
+}
+#texts>.head h2,#band>.head h2{
+  font-family:var(--disp);font-stretch:125%;font-weight:800;text-transform:uppercase;
+  font-size:clamp(38px,8vw,120px);line-height:.9;color:var(--bone);letter-spacing:-.01em;
+}
+.lyr-group{border-top:1px solid var(--line);padding-top:5vh;margin-bottom:7vh}
+.lyr-group:last-child{margin-bottom:0}
+.lyr-label{
+  font-family:var(--mono);font-size:var(--micro);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:5vh;
+}
+.lyr{
+  display:grid;grid-template-columns:minmax(120px,.9fr) 2fr;gap:4vw;
+  padding:4.5vh 0;border-top:1px solid rgba(232,228,220,.06);
+  transition:background .6s;
+  position:relative;
+}
+.lyr::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:var(--cold);transform:scaleY(0);transform-origin:top;
+  transition:transform .8s cubic-bezier(.19,1,.22,1);
+}
+.lyr.playing::before{transform:scaleY(1)}
+.lyr.playing header h3{color:var(--cold)}
+.lyr header .n{
+  font-family:var(--mono);font-size:var(--micro);letter-spacing:.2em;
+  color:var(--faint);display:block;margin-bottom:1.2vh;
+}
+.lyr.playing header .n{color:var(--cold)}
+.lyr header h3{
+  font-family:var(--disp);font-stretch:110%;font-weight:700;
+  text-transform:uppercase;font-size:clamp(15px,1.4vw+6px,22px);
+  color:var(--bone);letter-spacing:.01em;line-height:1.15;
+}
+.lyr .x{
+  font-family:var(--mono);font-size:clamp(11px,.55vw+8px,14px);
+  line-height:2.05;color:var(--dim);letter-spacing:.03em;max-width:62ch;
+}
+.lyr .x span{display:block}
+.lyr.playing .x{color:#a9a49a}
+
+/* ---------- Band (Bildband) ---------- */
+#band{position:relative;z-index:10;padding:12vh 26px 10vh}
+.band-block{margin-bottom:8vh}
+.band-block>.k{
+  font-family:var(--mono);font-size:var(--micro);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim);display:block;
+  border-top:1px solid var(--line);padding-top:3.5vh;margin-bottom:4vh;
+}
+.band-grid{columns:3;column-gap:14px}
+.band-grid figure{break-inside:avoid;margin:0 0 14px;position:relative;overflow:hidden;background:var(--oil-2)}
+.band-grid a{display:block}
+.band-grid img,.band-grid video{
+  width:100%;display:block;
+  filter:saturate(.92) brightness(.94);
+  transition:filter .7s,transform 1.2s cubic-bezier(.19,1,.22,1);
+}
+.band-grid figure:hover img,.band-grid figure:hover video{
+  filter:saturate(1) brightness(1);transform:scale(1.015);
+}
+@media (max-width:980px){.band-grid{columns:2}}
+@media (max-width:640px){
+  .band-grid{columns:1}
+  .lyr{grid-template-columns:1fr;gap:1.6vh}
+}
+
 /* ---------- Reduced motion / mobile ---------- */
 @media (prefers-reduced-motion:reduce){
   #grain{animation:none}
@@ -291,7 +365,7 @@ footer .sig{
 
 <!-- Fixed chrome -->
 <div class="chrome" id="c-tl"><b>K.I.M.I.</b>&nbsp;&nbsp;ERROR LOOP</div>
-<div class="chrome" id="c-tr">SCHMIERFILM · TERMINAL CUT · LOOP</div>
+<div class="chrome" id="c-tr">SCHMIERFILM · TERMINAL CUT · LOOP<br><a href="#texts" style="pointer-events:auto">TEXTS</a> · <a href="#band" style="pointer-events:auto">BILDBAND</a></div>
 <div class="chrome" id="c-bl" aria-hidden="true">SYS // ÖLDRUCK <span id="t-pres">0.97</span> — FEHLER <span class="cold">AKTIV</span> — LOOP <span id="t-time">00:00:00</span></div>
 <div class="chrome" id="c-br"><button id="capture" type="button">Aufzeichnen +</button></div>
 
@@ -346,6 +420,70 @@ footer .sig{
   </div>
 </div>
 
+<!-- TEXTS -->
+<section id="texts">
+  <div class="head rev">
+    <span class="k">Die zweite Haut</span>
+    <h2>Texts</h2>
+  </div>
+  <!-- lyr-Gruppen werden von assets/lyrics.js gefüllt -->
+</section>
+
+<!-- BILDBAND -->
+<section id="band">
+  <div class="head rev">
+    <span class="k">Material</span>
+    <h2>Bildband</h2>
+  </div>
+
+  <div class="band-block rev">
+    <span class="k">I · Verdichtung</span>
+    <div class="band-grid" data-art="a"><figure><a href="assets/art/a01_oelkreatur.jpg" target="_blank" rel="noopener"><img src="assets/art/a01_oelkreatur.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a02_monolith.jpg" target="_blank" rel="noopener"><img src="assets/art/a02_monolith.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a03_chromorganismus.jpg" target="_blank" rel="noopener"><img src="assets/art/a03_chromorganismus.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a04_chip.jpg" target="_blank" rel="noopener"><img src="assets/art/a04_chip.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a05_terminal.jpg" target="_blank" rel="noopener"><img src="assets/art/a05_terminal.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a06_kristall.jpg" target="_blank" rel="noopener"><img src="assets/art/a06_kristall.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a07_morast.jpg" target="_blank" rel="noopener"><img src="assets/art/a07_morast.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a08_herz.jpg" target="_blank" rel="noopener"><img src="assets/art/a08_herz.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a09_heiligenschein.jpg" target="_blank" rel="noopener"><img src="assets/art/a09_heiligenschein.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a10_kernexplosion.jpg" target="_blank" rel="noopener"><img src="assets/art/a10_kernexplosion.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a11_aktant_1.jpg" target="_blank" rel="noopener"><img src="assets/art/a11_aktant_1.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a12_brennend.jpg" target="_blank" rel="noopener"><img src="assets/art/a12_brennend.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a13_oelnacht.jpg" target="_blank" rel="noopener"><img src="assets/art/a13_oelnacht.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a14_sternwesen.jpg" target="_blank" rel="noopener"><img src="assets/art/a14_sternwesen.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a15_schmierfilm.jpg" target="_blank" rel="noopener"><img src="assets/art/a15_schmierfilm.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a16_kristallwesen.jpg" target="_blank" rel="noopener"><img src="assets/art/a16_kristallwesen.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a17_burst.jpg" target="_blank" rel="noopener"><img src="assets/art/a17_burst.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a18_schmierfilm_stadt.jpg" target="_blank" rel="noopener"><img src="assets/art/a18_schmierfilm_stadt.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a19_aktant_2.jpg" target="_blank" rel="noopener"><img src="assets/art/a19_aktant_2.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/a20_gasse.jpg" target="_blank" rel="noopener"><img src="assets/art/a20_gasse.jpg" alt="" loading="lazy" decoding="async"></a></figure></div>
+  </div>
+
+  <div class="band-block rev">
+    <span class="k">II · Entnahme</span>
+    <div class="band-grid" data-art="b"><figure><a href="assets/art/b00_banner.jpg" target="_blank" rel="noopener"><img src="assets/art/b00_banner.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b01_cut_poster.jpg" target="_blank" rel="noopener"><img src="assets/art/b01_cut_poster.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b02_cut_portrait.jpg" target="_blank" rel="noopener"><img src="assets/art/b02_cut_portrait.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b03_waechter.jpg" target="_blank" rel="noopener"><img src="assets/art/b03_waechter.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b04_scheibe.jpg" target="_blank" rel="noopener"><img src="assets/art/b04_scheibe.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b05_scherbe.jpg" target="_blank" rel="noopener"><img src="assets/art/b05_scherbe.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b06_zone.jpg" target="_blank" rel="noopener"><img src="assets/art/b06_zone.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b07_auge.jpg" target="_blank" rel="noopener"><img src="assets/art/b07_auge.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/b08_struktur.jpg" target="_blank" rel="noopener"><img src="assets/art/b08_struktur.jpg" alt="" loading="lazy" decoding="async"></a></figure></div>
+  </div>
+
+  <div class="band-block rev">
+    <span class="k">III · Umschlag / Geist</span>
+    <div class="band-grid" data-art="loop"><figure><a href="assets/art/loop01_tendrils.jpg" target="_blank" rel="noopener"><img src="assets/art/loop01_tendrils.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/loop02_ghost_gesicht.jpg" target="_blank" rel="noopener"><img src="assets/art/loop02_ghost_gesicht.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/loop03_ghost.mp4" target="_blank" rel="noopener"><video src="assets/art/loop03_ghost.mp4" muted loop autoplay playsinline loading="lazy"></video></a></figure>
+    <figure><a href="assets/art/loop04_bahnsteig.jpg" target="_blank" rel="noopener"><img src="assets/art/loop04_bahnsteig.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/loop05_phantom.jpg" target="_blank" rel="noopener"><img src="assets/art/loop05_phantom.jpg" alt="" loading="lazy" decoding="async"></a></figure>
+    <figure><a href="assets/art/loop06_gleich_unendlich.gif" target="_blank" rel="noopener"><img src="assets/art/loop06_gleich_unendlich.gif" alt="" loading="lazy" decoding="async"></a></figure></div>
+  </div>
+</section>
+
 <footer>
   <p class="fin rev">
     Der Ausstieg ist möglich.<br>
@@ -356,6 +494,7 @@ footer .sig{
 
 <audio id="au" preload="none"></audio>
 <script src="assets/key-visual.js"></script>
+<script src="assets/lyrics.js"></script>
 
 <script>
 'use strict';
@@ -721,6 +860,7 @@ function playTrack(ph, i){
   document.querySelectorAll('.tracks li').forEach(li=>{
     li.classList.toggle('playing', li.dataset.ph===ph && +li.dataset.i===i);
   });
+  window.__lyrSync && window.__lyrSync(ph, i);
 }
 au.addEventListener('timeupdate', ()=>{
   if (au.duration) ringFg.style.strokeDashoffset = CIRC*(1-au.currentTime/au.duration);
@@ -754,7 +894,7 @@ phaseEls.forEach((el, i) => {
   PHASES[ph].tracks.forEach((f, j) => {
     const li = document.createElement('li');
     li.dataset.ph = ph; li.dataset.i = j;
-    li.innerHTML = `<span class="idx">${String(j+1).padStart(2,'0')}</span>${pretty(f)}<span class="st">anhören</span>`;
+    li.innerHTML = `<span class="idx">${String(j+1).padStart(2,'0')}</span>${pretty(f)}<span class="st">anhören · <a href="#lyr-${ph}-${j+1}" style="pointer-events:auto">text</a></span>`;
     li.addEventListener('click', e => { e.stopPropagation(); playTrack(ph, j); });
     ul.appendChild(li);
   });
