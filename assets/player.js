@@ -88,6 +88,11 @@ au.addEventListener('ended', ()=>{
     play(next, 0);
   }
 });
+/* Fehler sichtbar machen statt Schweigen */
+au.addEventListener('error', ()=>{
+  if (!au.src) return;
+  pTitle.innerHTML = 'FEHLER — TRACK NICHT ERREICHBAR<small>erneut tippen, um es noch einmal zu versuchen</small>';
+});
 
 function togglePlay(){
   if (!au.src) return;
@@ -177,8 +182,18 @@ function buildLists(phaseEls){
     PHASES[ph].tracks.forEach((f, j) => {
       const li = document.createElement('li');
       li.dataset.ph = ph; li.dataset.i = j;
-      li.innerHTML = `<span class="idx">${String(j+1).padStart(2,'0')}</span>${pretty(f)}<span class="st">anhören · <a href="#lyr-${ph}-${j+1}" style="pointer-events:auto">text</a></span>`;
+      li.innerHTML = `<span class="idx">${String(j+1).padStart(2,'0')}</span>${pretty(f)}<span class="st">anhören · <a href="#lyr-${ph}-${j+1}" data-lyr="${ph}-${j+1}">lyrics&nbsp;↗</a></span>`;
       li.addEventListener('click', e => { e.stopPropagation(); play(ph, j); });
+      /* LYRICS-Link: nicht abspielen, sondern die Haut am richtigen
+         Text öffnen — stopPropagation, damit der li-Handler nicht feuert */
+      li.querySelector('[data-lyr]').addEventListener('click', e => {
+        e.stopPropagation();
+        e.preventDefault();
+        Skin.enter();
+        const target = document.getElementById(`lyr-${ph}-${j+1}`);
+        setTimeout(() => target && target.scrollIntoView({behavior:'smooth', block:'center'}),
+          Engine.REDUCED ? 700 : 1300);
+      });
       ul.appendChild(li);
     });
   });

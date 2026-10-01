@@ -524,7 +524,12 @@ footer .sig{
   .phase .meta{display:none}
   #enter{right:18px}
   #hero,#phases .phase{padding-left:18px;padding-right:18px}
-  #haut{right:12px}
+  #haut{
+    writing-mode:horizontal-tb;top:auto;bottom:74px;right:18px;
+    transform:none;border-right:0;border:1px solid var(--line);
+    padding:11px 16px;background:rgba(10,9,8,.66);backdrop-filter:blur(10px);
+    letter-spacing:.18em;
+  }
   #deck-inner{grid-template-columns:1fr;align-items:start}
   #deck-art{max-width:52vmin}
   .lyr{grid-template-columns:1fr;gap:1.6vh}
@@ -544,7 +549,7 @@ footer .sig{
 
 <!-- Fixed chrome -->
 <div class="chrome" id="c-tl"><b>K.I.M.I.</b>&nbsp;&nbsp;ERROR LOOP</div>
-<div class="chrome" id="c-tr">SCHMIERFILM · TERMINAL CUT · LOOP<br><span class="cold" id="t-run">DURCHLAUF #0001</span></div>
+<div class="chrome" id="c-tr">SCHMIERFILM · TERMINAL CUT · LOOP<br><a href="#" id="c-lyrics" style="pointer-events:auto;color:var(--cold)">LYRICS — ZWEITE HAUT</a><br><span class="cold" id="t-run">DURCHLAUF #0001</span></div>
 <div class="chrome" id="c-bl" aria-hidden="true">SYS // ÖLDRUCK <span id="t-pres">0.97</span> — FEHLER <span class="cold">AKTIV</span> — LOOP <span id="t-time">00:00:00</span></div>
 <div class="chrome" id="c-br"><button id="capture" type="button">Aufzeichnen +</button></div>
 
@@ -700,6 +705,10 @@ phaseEls.forEach(el => {
       if (!S.noAuto && (Player.current.ph!==ph || !document.getElementById('au').src))
         Player.play(ph, 0);
       S.noAuto = false;
+      /* auf dem Phone: Liste sonst unterhalb der Sichtkante — nachführen */
+      const r = el.getBoundingClientRect();
+      if (r.top < 0 || r.top > innerHeight*.3)
+        el.scrollIntoView({behavior:'smooth', block:'start'});
     } else {
       S.phase = 'idle';
     }
@@ -801,15 +810,10 @@ Engine.onGlitch = function(){
   stutTimer = setTimeout(() => heroH1.classList.remove('stut'), 140);
 };
 
-/* „text“-Links in den Tracklisten öffnen die Haut an der richtigen Stelle */
-document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#lyr-"]');
-  if (!a) return;
+/* LYRICS-Haupteinstieg in der Chrome-Leiste */
+document.getElementById('c-lyrics').addEventListener('click', e => {
   e.preventDefault();
-  const target = document.getElementById(a.getAttribute('href').slice(1));
   Skin.enter();
-  setTimeout(() => target && target.scrollIntoView({behavior:'smooth', block:'center'}),
-    REDUCED ? 700 : 1300);
 });
 
 /* ================================================================
