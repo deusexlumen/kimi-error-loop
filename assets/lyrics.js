@@ -323,36 +323,5 @@ dass es weitergeht.` }
 ]
 };
 
-/* Renderer + Verbindung zum Player.
-   Wird nach index.html geladen, erwartet #texts im DOM. */
-(function(){
-  const host = document.getElementById('texts');
-  if (!host || typeof LYRICS === 'undefined') return;
-
-  const ROMAN = { a:'I', b:'II', loop:'III' };
-  const LABEL = { a:'SCHMIERFILM — VERDICHTUNG', b:'TERMINAL CUT — ENTNAHME', loop:'LOOP — UMSCHLAG' };
-
-  for (const ph of ['a','b','loop']){
-    const g = document.createElement('div');
-    g.className = 'lyr-group';
-    g.innerHTML = `<div class="lyr-label">${ROMAN[ph]} · ${LABEL[ph]}</div>`;
-    LYRICS[ph].forEach((tr, i) => {
-      const el = document.createElement('article');
-      el.className = 'lyr';
-      el.id = `lyr-${ph}-${i+1}`;
-      const lines = tr.x.split('\n').map(l => `<span>${l || '&nbsp;'}</span>`).join('');
-      el.innerHTML = `
-        <header><span class="n">${ROMAN[ph]}·${String(i+1).padStart(2,'0')}</span><h3>${tr.t}</h3></header>
-        <div class="x">${lines}</div>`;
-      g.appendChild(el);
-    });
-    host.appendChild(g);
-  }
-
-  /* aktiver Track hebt seinen Text hervor */
-  window.__lyrSync = function(ph, i){
-    document.querySelectorAll('.lyr.playing').forEach(e => e.classList.remove('playing'));
-    const el = document.getElementById(`lyr-${ph}-${i+1}`);
-    if (el) el.classList.add('playing');
-  };
-})();
+/* Rendering und Beat-Kopplung liegen in assets/typosync.js —
+   diese Datei liefert nur noch die Daten (LYRICS). */
