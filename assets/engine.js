@@ -13,7 +13,8 @@ const S = {
   phase: 'idle',
   warm: .6, aber: .35, flow: .9, scale: 1, drift: .5,
   glitch: 0, nextGlitch: 4.5,
-  audio: 0, audioSm: 0
+  audio: 0, audioSm: 0,
+  calm: 0, calmT: 0
 };
 const TARGETS = {
   idle: {warm:.6, aber:.35, flow:.9,  scale:1,    drift:.5,  glint:[9,15]},
@@ -60,7 +61,7 @@ precision highp float;
 in vec2 vUv; out vec4 o;
 uniform sampler2D uTex, uTexB, uFlow;
 uniform vec2 uRes, uImg, uImgB, uDrift;
-uniform float uTime, uAber, uWarm, uGlitch, uSeed, uAudio, uFlowStr, uScale, uTexMix;
+uniform float uTime, uAber, uWarm, uGlitch, uSeed, uAudio, uFlowStr, uScale, uTexMix, uCalm;
 
 vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
 vec2 mod289(vec2 x){return x-floor(x*(1./289.))*289.;}
@@ -104,7 +105,10 @@ void main(){
   float cURLx = snoise(q-vec2(e,0)) - snoise(q+vec2(e,0));
   vec2 curl = vec2(cURLy, cURLx)/(2.*e);
 
-  vec2 disp = curl*(.0032+uAudio*.011) + fl*uFlowStr;
+  /* Ruhe-Modus: Text liegt über dem Bild → Fluss & Farbriss beruhigen,
+     Sättigung zieht Richtung Öl-Schwarz. Der Fehler (Glitch) bleibt. */
+  float calm = 1. - uCalm*.72;
+  vec2 disp = curl*(.0026+uAudio*.006)*calm + fl*uFlowStr*calm;
 
   /* Stutter: Zeilenversatz */
   float row = floor(vUv.y*90.);
@@ -113,7 +117,7 @@ void main(){
   disp.x += (h-.5)*.11*g;
 
   /* chromatische Aberration — nur im Bild, kalt */
-  float ab = (.0012+uAber*.0032+uGlitch*.011)*(1.+uAudio*1.8);
+  float ab = (.0012+uAber*.0032)*(1.+uAudio*.8)*calm + uGlitch*.011*(1.+uAudio*1.8);
   vec3 colA = sampleAber(uTex,  coverUv(vUv,uImg, disp,uScale), ab);
   vec3 colB = sampleAber(uTexB, coverUv(vUv,uImgB,disp,uScale), ab);
   float m = smoothstep(0.,1.,uTexMix);
@@ -125,6 +129,10 @@ void main(){
   vec3 coldC = mix(vec3(lum),col,.5)*vec3(.9,.99,1.08);
   col = mix(coldC, warmC, uWarm);
   col *= 1.08;   /* leichte Anhebung — Öl glänzt, bleibt aber dunkel */
+
+  /* Ruhe: entsättigen + abdimmen, damit Type trägt */
+  col = mix(col, vec3(lum)*vec3(.86,.92,.97), uCalm*.5);
+  col *= 1. - uCalm*.32;
 
   /* kalte Glas-Flanke während des Stutters */
   col += uGlitch*vec3(.35,.5,.55)*step(.96,hash(row*3.7+uSeed))*.3;
@@ -259,6 +267,7 @@ function frame(now){
   S.flow=lerp(S.flow,T.flow,k); S.scale=lerp(S.scale,T.scale,k);
   S.drift=lerp(S.drift,driftT,k);
   S.audioSm = lerp(S.audioSm, S.audio, 1-Math.pow(.01, dt));
+  S.calm = lerp(S.calm, S.calmT, 1-Math.pow(.02, dt));
 
   /* Textur-Crossfade */
   if (swapInFlight){
@@ -314,6 +323,7 @@ function drawScene(t){
   gl.uniform1f(prog.draw.u.uFlowStr, .014*S.flow);
   gl.uniform1f(prog.draw.u.uScale, S.scale);
   gl.uniform1f(prog.draw.u.uTexMix, texMix);
+  gl.uniform1f(prog.draw.u.uCalm, S.calm);
   gl.uniform2f(prog.draw.u.uDrift, S.drift, S.drift*.6);
   gl.drawArrays(gl.TRIANGLES,0,3);
 }

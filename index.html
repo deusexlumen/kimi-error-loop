@@ -71,6 +71,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   100%{transform:translate(0,0)}
 }
 
+/* ---------- Lesbarkeits-Schleier über dem Öl ---------- */
+#scrim{
+  position:fixed;inset:0;z-index:5;pointer-events:none;
+  background:rgba(10,9,8,.55);
+  opacity:0;transition:opacity .9s ease;
+}
+
 /* ---------- Vignette ---------- */
 #vignette{
   position:fixed;inset:0;z-index:1;pointer-events:none;
@@ -272,7 +279,7 @@ body.ready #hero h1 .row::after{opacity:1}
 .tracks li{
   display:flex;align-items:baseline;gap:2.4vw;
   font-family:var(--mono);font-size:var(--micro);
-  letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+  letter-spacing:.12em;text-transform:uppercase;color:#9a958a;
   padding:11px 2px;border-bottom:1px solid rgba(232,228,220,.06);
   cursor:pointer;transition:color .25s,padding-left .35s cubic-bezier(.19,1,.22,1);
 }
@@ -528,6 +535,7 @@ footer .sig{
 
 <canvas id="gl"></canvas>
 <div id="fallback"></div>
+<div id="scrim"></div>
 <div id="vignette"></div>
 <div id="grain"></div>
 
@@ -659,6 +667,20 @@ const S = Engine.state;
 const lerp = (a,b,t) => a+(b-a)*t;
 
 /* ================================================================
+   LESBARKEIT — Ruhe-Modus: je weiter gescrollt / je offener eine
+   Phase, desto ruhiger das Öl (Shader) + Schleier über dem Canvas
+   ================================================================ */
+const scrim = document.getElementById('scrim');
+function updateCalm(){
+  const past = Math.min(1, Math.max(0, (scrollY - innerHeight*.5)/(innerHeight*.4)));
+  const open = document.querySelector('.phase.open') ? 1 : 0;
+  S.calmT = Math.min(1, past*.85 + open*.35);
+  scrim.style.opacity = Math.min(1, past + open*.4) * .8;
+}
+addEventListener('scroll', updateCalm, {passive:true});
+updateCalm();
+
+/* ================================================================
    PHASEN-UI
    ================================================================ */
 const phasesEl = document.getElementById('phases');
@@ -681,6 +703,7 @@ phaseEls.forEach(el => {
     } else {
       S.phase = 'idle';
     }
+    updateCalm();
   });
   el.addEventListener('keydown', e => {
     if (e.key==='Enter' || e.key===' '){ e.preventDefault(); el.click(); }
