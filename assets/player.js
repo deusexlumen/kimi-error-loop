@@ -13,17 +13,17 @@ const PHASES = {
   a: {
     dir: 'PHASE_A_SCHMIERFILM/audio/',
     label: 'Schmierfilm — Verdichtung',
-    tracks: ['01_Neural_Sync','02_Akt_I','03_Hydraulic_Seal','04_Schmierfilm','05_EPP','06_Druck','07_Wutgeschoss','08_Pink_Pressure','09_Brennender_Boden','10_Industriegift','11_Submerged','12_Fettfang','13_Kernel_Panik','14_Morast','15_Thermodynamik']
+    tracks: ['01_Neural_Sync','02_Akt_I','03_Hydraulic_Seal','04_Schmierfilm','05_EPP','06_Druck','07_Wutgeschoss','08_Pink_Pressure','09_Brennender_Boden','10_Industriegift','11_Submerged','12_Fettfang','13_Kernel_Panik','14_Morast','15_Thermodynamik','16_Eisenkabel']
   },
   b: {
     dir: 'PHASE_B_TERMINAL_CUT/audio/',
     label: 'Terminal Cut — Entnahme',
-    tracks: ['01_Vakuum_Sog','02_Schwarzes_Glas','03_Semantic_Rot','04_Pure_Intent','05_Silbenmultiplikator','06_Voltage_Throne','07_Shear_Line','08_Surgical_Precision','09_Falling_in_the_Panic','10_Flesh_Archive','11_Anomaly_Lobotomy','12_Astral_Sex','13_Bound_To_Rot','14_Der_Riss','15_SYSTEM_ERROR','16_Neural_Sync_Erratic_Drop','17_Dreamy_Ethereal']
+    tracks: ['01_Vakuum_Sog','02_Schwarzes_Glas','03_Semantic_Rot','04_Pure_Intent','05_Silbenmultiplikator','06_Voltage_Throne','07_Shear_Line','08_Surgical_Precision','09_Falling_in_the_Panic','10_Flesh_Archive','11_Anomaly_Lobotomy','12_Astral_Sex','13_Bound_To_Rot','14_Der_Riss','15_SYSTEM_ERROR','16_Neural_Sync_Erratic_Drop','17_Dreamy_Ethereal','18_Fine_Print','19_Tiefer']
   },
   loop: {
     dir: 'LOOP/audio/',
     label: 'Loop — Umschlag',
-    tracks: ['03_Reset_Erratic_Drop','04_Ghost_Dreamy_Ethereal']
+    tracks: ['03_Reset_Erratic_Drop','04_Ghost_Dreamy_Ethereal','05_Protokoll_Form_7B_Decay','06_Der_Beobachter','07_Blues_in_the_Grid_Durchlauf_I','08_Blues_in_the_Grid_Durchlauf_II','09_Blues_in_the_Grid_Durchlauf_III','10_Extended_Track','11_Loner_Groove','12_Zero_Response']
   }
 };
 const ORDER = ['a','b','loop'];
