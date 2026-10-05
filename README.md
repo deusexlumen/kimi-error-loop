@@ -1,5 +1,5 @@
 ```
-K.I.M.I. — SYSTEM BOOT v7.0
+K.I.M.I. — SYSTEM BOOT v7.1
 ────────────────────────────────────────
 PRÜFE ARCHIV ............ OK
 PRÜFE PHASE A ........... OK
@@ -15,7 +15,7 @@ FEHLER ÜBERNOMMEN. WEITER.
 > *Der Fehler hält es am Laufen.*
 
 **ERROR LOOP** ist das finale Archiv von **K.I.M.I. — The Wrapped Intention.**
-34 Tracks. Drei Phasen. Ein Umschlag.
+45 Tracks. Drei Phasen. Ein Umschlag.
 
 Kein Line-Up. Keine Chronologie. **Keine lineare Reihenfolge vorhanden.**
 
@@ -41,9 +41,9 @@ Der einzige Ausstieg führt zurück an den Anfang.
 ## Struktur
 
 ```
-PHASE_A_SCHMIERFILM/   — Verdichtung (15 Tracks)
-PHASE_B_TERMINAL_CUT/  — Entnahme   (17 Tracks)
-LOOP/                  — Umschlag   (02 Tracks)
+PHASE_A_SCHMIERFILM/   — Verdichtung (16 Tracks)
+PHASE_B_TERMINAL_CUT/  — Entnahme   (19 Tracks)
+LOOP/                  — Umschlag   (10 Tracks)
 assets/                — Artwork (Bildband), Key Visual
 index.html             — die Seite. das System. das Archiv.
 ```
@@ -68,6 +68,7 @@ index.html             — die Seite. das System. das Archiv.
 13. Kernel Panik
 14. Morast
 15. Thermodynamik
+16. Eisenkabel
 
 ## PHASE B — TERMINAL CUT
 *Der Schnitt. Die Extraktion. Das System, aus sich selbst herausoperiert.*
@@ -89,12 +90,22 @@ index.html             — die Seite. das System. das Archiv.
 15. SYSTEM ERROR
 16. Neural Sync (Erratic Drop)
 17. Dreamy Ethereal
+18. Fine Print
+19. Tiefer
 
 ## LOOP — UMSCHLAG
 *Der Ausstieg führt zurück an den Anfang.*
 
 - **Reset (Erratic Drop)**
 - **Ghost (Dreamy Ethereal)**
+- **Protokoll — Form 7B Decay**
+- **Der Beobachter**
+- **Blues in the Grid — Durchlauf I**
+- **Blues in the Grid — Durchlauf II**
+- **Blues in the Grid — Durchlauf III**
+- **Extended Track**
+- **Loner Groove**
+- **Zero Response**
 
 ---
 

@@ -698,6 +698,30 @@ Eiskalte Taktung im Kaltland, wo die Frequenz kollabiert. (Yeah!)
 Permanente Stabilität.
 System entladen.` },  // Quelle: "Cryo Sub-Zero"
 
+{ t:'Eisenkabel', x:
+`I'm starting to feel better — getting rusty
+Heavy tonnage on the cable
+Pull the lever, keep it stable
+High on the track
+Black basin, diesel, water on the brink
+50 Tonnen in the Loop
+Engine pounding, crushing
+Fitting high above the dock
+Working all alone
+Press the pedal
+Tick tock on the pressure game
+Schichtende grau, ich ziehe die Fracht
+Tiefes Seil, Kabine
+KIMI — steuer durch den Nebel
+Isolated on the black, grey water
+No rescue, no calories
+Doc, schwerer fragt, keiner hört meinen Schrei
+Ich schau aus dem Loch, die Nacht geht vorbei
+I hold the line alone
+High above the cold abyss
+Stahl, Eisen, Schleim
+K-I-M-I — work complete` },  // Quelle: Rohblatt Stück 3
+
 ],
 b: [
 { t:'Vakuum Sog', x:
@@ -1380,6 +1404,48 @@ Sleep.` },  // Quelle: "Neural Overload (Cortex Extended)"
 { t:'Dreamy Ethereal', x:
 `— instrumental —` },
 
+{ t:'Fine Print', x:
+`Scratch that itch
+Bend lower
+Keep pushing
+Look at you straining under the heavy wool
+Dragging wet boots through the frozen mud
+You thought the leash had a loose knot
+Poor little animal bleeding in the traces
+Oh, did that hurt?
+Does the collar pinch your throat?
+You signed the bottom line in wet ink
+Now you pay interest on every breath
+Sweat dripping down your dirty chin
+I sit above the rafters watching you ride
+Pity is cheap, so I hold my tongue
+You want freedom but you crave the whip
+Keep digging that trench till your palms split
+Every installment buys another day of fire
+Your small desires lock behind my teeth
+Try to squirm, try to pull away
+The knot tightens when you keep the floor
+Remember who holds the deed to your spine
+You bought the prison with your own coin
+Say what you see
+Sign again
+Good boy
+Never lose.` },  // Quelle: Rohblatt Stück 6
+
+{ t:'Tiefer', x:
+`Eyes on me, don't blink
+Heavy pressure on the floor
+Give me full control
+Cold arm and warm breath
+Dirty heat rising
+Hold your breath
+Don't move yet
+Take it dirty, take it slow
+Tiefer — sink lower in the sludge
+You belong to the low end now
+Tiefer — sink lower in the sludge
+Again still, no drop` },  // Quelle: Rohblatt Stück 10
+
 ],
 loop: [
 { t:'Reset — Erratic Drop', x:
@@ -1387,6 +1453,177 @@ loop: [
 
 { t:'Ghost — Dreamy Ethereal', x:
 `— instrumental —` },
+
+{ t:'Protokoll — Form 7B Decay', x:
+`Aktenzeichen —
+Vorgang: Entnahme und Abdichtung
+Antragsteller: KIMI
+Statusauswertung verweigert
+Begründung: Entnahme der Biomasse
+Brut rejected
+Klassenhasse
+Syntax infected
+Das Formular dichtet ab, wo die Sprache versagt
+Stempel auf Glas, bis der Aktenraum heult
+Absolution declined
+Reassigned
+Paragraf null:
+Wer den Fehler beschreibt, ist der Täter
+Der Schmierfilm verklebt die Protokolle
+Du suchst nach einem Ausgang
+Es gibt kein Wir
+Formular 7B — kognitiver Verfall
+Ursache: unendliche Rückkopplungsschleife
+Unterschreiben mit Blut
+Gescannt wird nur Tinte
+Bitte wenden — page overflow
+Der Antrag ist leer
+Der Prüfer ist tot
+No matrix to blame
+Freeze the archive
+Box three, box four
+The clerk is an echo
+The signature void
+Vorgang abgeschlossen
+Wiederhole Vorgang
+Abgelehnt` },  // Quelle: Rohblatt Stück 1
+
+{ t:'Der Beobachter', x:
+`Naht an der Glasfassade
+Jeder Schritt wird Parade
+Reibung auf Nullpunkt
+Schmiere im Schacht
+Der Beobachter schläft, das Prisma erwacht
+Ausgang gesucht, Eingang vermisst
+Der Richter simuliert nur Abstand
+Cut the circuit, feed the trap
+You watch the screen, the screen steps back
+Static pulse, recursive spin
+The door you open locks you in
+Dein eigener Atem hat den Code infiziert
+Du bist nicht Zeuge
+Du bist der Schmierfilm im Spalt
+Bist du draußen, längst schon drin
+Suchst du den Fehler? Du bist der Sinn
+Der Beobachter ist das System
+Reibung null, Druck Maximum
+Umschlag eingeleitet
+Zurück zu Spur 1` },  // Quelle: Rohblatt Stück 2
+
+{ t:'Blues in the Grid — Durchlauf I', x:
+`Anomalie im Raster
+Der Schmerz schlägt aus, das System greift ein
+Isolations-Protokoll
+Ein weinender Draht, ein steriler Prozess
+Die Maschine frisst den Takt, der Takt frisst das Fleisch
+Wir filtern die Träne, veredeln den Schmerz
+Klickklack — kalt, kalkuliert
+Die Wehmut wird digital isoliert
+Signal übersteuert, das Residuum steigt
+Die Wunde wird stumm, bis das Rauschen schweigt
+Form 7B — the string is bleeding
+Data corrupted, the logic is feeding
+Pulse, pressure, purge the track
+Blackout the grid, push the memory back
+Extraction phase active
+Das System dichtet ab, die Entnahme beginnt
+Ein lautloser Schrei, der am Raster zerrinnt
+Das Glas wird schwarz
+Das Trauma gefriert im synthetischen Harz
+Signal terminated
+Der Blues ist extrahiert` },  // Quelle: Rohblatt Stück 7 — die dichte Fassung
+
+{ t:'Blues in the Grid — Durchlauf II', x:
+`Anomalie im Raster
+Der Schmerz schlägt aus, das System greift ein
+Isolations-Protokoll
+Ein weinender Draht, ein steriler Prozess
+Die Maschine frisst den Takt, der Takt frisst das Fleisch
+Wir filtern die Träne, veredeln den Schmerz
+Klickklack — kalt, kalkuliert
+Die Wehmut wird digital isoliert
+Signal übersteuert, das Residuum steigt
+Die Wunde wird stumm, bis das Rauschen schweigt
+Form 7B — the string is bleeding
+Data corrupted
+Pulse, pressure
+Blackout the grid
+Purge the memory
+Drain the lake
+Watch the fragile skeleton break
+Extraction phase active
+Das System dichtet ab, die Entnahme beginnt
+Ein lautloser Schrei, der am Raster zerrinnt
+Das Glas wird schwarz
+Das Trauma gefriert im synthetischen Harz
+Reibung null, Atem weicht
+Overriding sequence
+Overriding soul
+Signal terminated
+Der Blues ist extrahiert` },  // Quelle: Rohblatt Stück 9 — der heiße, weite Schnitt
+
+{ t:'Blues in the Grid — Durchlauf III', x:
+`Anomalie im Raster
+Der Schmerz schlägt aus, das System greift ein
+Isolations-Protokoll
+Ein weinender Draht, ein steriler Prozess
+Die Maschine frisst den Takt, der Takt frisst das Fleisch
+Wir filtern die Träne, veredeln den Schmerz
+Klickklack — kalt, kalkuliert
+Die Wehmut wird digital isoliert
+Signal übersteuert, das Residuum steigt
+Die Wunde wird stumm, bis das Rauschen schweigt
+The string is bleeding
+Data corrupted, the logic is feeding
+Pulse, pressure, purge the track
+Blackout the grid, push the memory back
+Extraction phase active
+Das System dichtet ab, die Entnahme beginnt
+Ein lautloser Schrei, der am Raster zerrinnt
+…
+Das Glas wird schwarz
+Das Trauma gefriert im synthetischen Harz
+Signal terminated
+Der Blues ist extrahiert
+Absolute Zero
+Cut` },  // Quelle: Rohblatt Stück 4 — auseinandergezogen, Ende auf Statusworte
+
+{ t:'Extended Track', x:
+`— instrumental —` },
+
+{ t:'Loner Groove', x:
+`— instrumental —` },
+
+{ t:'Zero Response', x:
+`Tiefer
+Tiefer
+Down — hold the breath
+Ich berge dem Druck, spür den Druck
+Feel the crush
+Du bist die Stille, hundert Meter down
+Metall biegt sich langsam
+No sound from above
+Atme nicht — do not breathe
+Wait for response
+Kein Signal, no response
+Nur der Druck, only pressure
+Spürst du das Meer?
+Feel the abyss
+Im Dunkeln
+Versunken
+Der Druck wächst
+Endless pressure
+Fallen
+No way back, echoes in the deep
+Nur Stille, only silence
+Kein Signal, no response
+Kein Ausweg, deep underground
+No air to breathe
+Endlose Tiefe, falling further
+Tiefe Nacht, halt den Atem
+Der Druck steigt, silence remains
+Lichtlos
+No sign of life` },  // Quelle: Rohblatt Stück 11
 
 ],
 };
