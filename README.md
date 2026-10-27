@@ -1,3 +1,5 @@
+> **Einordnung:** Dies ist die maßgebliche ERROR-LOOP-Release-Seite. Die ältere [React-Fassung error-loop](https://github.com/deusexlumen/error-loop) bleibt als alternative Ausgabe mit vier Bereichen und zusätzlichen Inhalten erhalten.
+
 ```
 K.I.M.I. — SYSTEM BOOT v7.1
 ────────────────────────────────────────
